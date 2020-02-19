@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DeviseJm</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <% if user_signed_in?%>
+  Hola: <%= current_user.email %>
+  <br>
+  <%= link_to 'Salir', destroy_user_session_path, method: :delete%>
+  <br>
+  <%= link_to 'Perfil',edit_user_registration_path %>
+  <% else %>
+  <%= link_to 'Login', new_user_session_path %>
+  <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>
